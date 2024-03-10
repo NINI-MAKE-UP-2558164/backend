@@ -1,0 +1,28 @@
+proyecto/                  # Carpeta principal del proyecto
+├── app1/                   # Carpeta de la aplicación "app1"
+│   ├── migrations/         # Migraciones de la base de datos
+│   │   ├── __init__.py    # Archivo vacío para indicar que esta carpeta es un paquete de Python
+│   ├── static/             # Archivos estáticos de la aplicación (CSS, JS, imágenes, etc.)
+│   │   ├── app1/           # Carpeta específica de la aplicación para archivos estáticos
+│   │   │   ├── css/         # Carpeta para archivos CSS
+│   │   │   ├── js/          # Carpeta para archivos JavaScript
+│   │   │   ├── img/         # Carpeta para imágenes
+│   ├── templates/          # Plantillas HTML de la aplicación
+│   │   ├── app1/           # Carpeta específica de la aplicación para plantillas
+│   │   │   ├── index.html   # Ejemplo de una plantilla HTML
+│   │   │   ├── ...
+│   ├── admin.py            # Configuración del panel de administración
+│   ├── apps.py              # Configuración de la aplicación
+│   ├── models.py           # Definición de modelos de la base de datos
+│   ├── tests.py             # Pruebas de la aplicación
+│   ├── views.py              # Vistas de la aplicación
+│   ├── ...
+├── proyecto/                # Carpeta de configuración del proyecto
+│   ├── __init__.py         # Archivo vacío para indicar que esta carpeta es un paquete de Python
+│   ├── settings.py         # Configuración general del proyecto (base de datos, aplicaciones, etc.)
+│   ├── urls.py                 # Configuración de URLs del proyecto (enrutamiento de las vistas)
+│   ├── asgi.py                 # Punto de entrada para el servidor ASGI (usado en despliegues asincrónicos)
+│   ├── wsgi.py                 # Punto de entrada para el servidor WSGI (usado en despliegues HTTP)
+├── virtualenv/             # Entorno virtual del proyecto
+├── manage.py                # Script para gestionar el proyecto (ejecutar servidor, migraciones, etc.)
+├── requirements.txt    # Lista de dependencias del proyecto (paquetes Python necesarios)

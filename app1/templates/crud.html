@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <!-- Agrega aquí tus enlaces a las hojas de estilo y scripts necesarios -->
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <a href="{% url 'form_editar_estudios' est.idestudios %}">
+                    <i class="fa-solid fa-pen-to-square" style="color: cadetblue; font-size:22px"></i>
+                </a>
+
+                <a href="{% url 'eliminar_estudio' est.idestudios %}">
+                    <i class="fa-solid fa-trash-can" style="color: cadetblue; font-size:22px"></i>
+                </a>
+            </td>
+
+            <td>
+                <a href="{% url 'form_editar_estudios' est.idestudios %}">
+                    <i class="fa-solid fa-pen-to-square" style="color: cadetblue; font-size:22px"></i>
+                </a>
+
+                <a href="{% url 'eliminar_estudio' est.idestudios %}">
+                    <i class="fa-solid fa-trash-can" style="color: cadetblue; font-size:22px"></i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        {% for campo in formulario %}
+        <div class="form-group">
+            <label for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+            <input 
+                type="{{ campo.field.widget.input_type }}"
+                class="form-control"
+                name="{{ campo.name }}"
+                value="{{ campo.value|default:'' }}"
+                id="{{ campo.id_for_label }}"
+                placeholder="{{ campo.label }}">
+        </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Create">
+    </form>
+</body>
+</html>

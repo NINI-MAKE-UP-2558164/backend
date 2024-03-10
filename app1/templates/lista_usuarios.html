@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+<link rel="stylesheet" href="{% static 'css/crud/listar.css' %}">
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Contraseña</th>
+                <th>Estado</th>
+                <th>Fecha de Creación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellidos }}</td>
+                    <td>{{ usuario.celular }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.direccion }}</td>
+                    <td>{{ usuario.contrasena }}</td>
+                    <td>{{ usuario.estado }}</td>
+                    <td>{{ usuario.created_at }}</td>
+                    <td class="action-links">
+                        <a href="{% url 'editar_usuario' usuario.pk %}">Editar</a> 
+                        <a href="{% url 'eliminar_usuario' usuario.pk %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="create-user-link" href="{% url 'crear_usuario' %}">Crear Usuario</a>
+</body>
+</html>

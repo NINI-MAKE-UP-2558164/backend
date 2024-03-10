@@ -1,0 +1,77 @@
+/* Establecer un fondo negro */
+body {
+    background-color: #000;
+    color: #c10000; /* Color del texto en blanco */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el encabezado h1 */
+h1 {
+    color: #ff6600; /* Color de resaltado (naranja) para el título */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
+    color: #ff0000; /* Color del texto en rojo */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #dd7b79; /* Rosa oscuro */
+    color: #fff;
+}
+
+/* Filas alternas */
+tr:nth-child(even) {
+    background-color: #333; /* Fondo negro hermoso */
+}
+
+/* Estilo para los enlaces */
+a {
+    display: block;
+    text-align: center;
+    color: #ff6600; /* Color de resaltado (naranja) para el enlace */
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Estilo para los enlaces al pasar el mouse */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el botón */
+.create-user-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff6600; /* Botón naranja */
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el botón al pasar el mouse */
+.create-user-link:hover {
+    background-color: #c26966; /* Rosa más oscuro al pasar el mouse */
+}

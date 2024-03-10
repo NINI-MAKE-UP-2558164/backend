@@ -1,0 +1,27 @@
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn-register {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+}
+
+.btn-register:hover {
+    background-color: #0056b3;
+}

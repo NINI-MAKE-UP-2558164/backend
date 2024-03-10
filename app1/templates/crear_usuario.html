@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+</head>
+<link rel="stylesheet" href="{% static 'css/crud/crear.css' %}">
+<body>
+    <h1>Crear Usuario</h1><br>
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    <a href="{% url 'lista_usuarios' %}">Volver a la lista de usuarios</a>
+</body>
+</html>

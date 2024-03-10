@@ -1,0 +1,24 @@
+
+
+base de datos mysql en la nuve
+
+
+1. MYSQL_URL
+mysql://root:Z8pabdAfXFFvzoNftVUm@containers-us-west-179.railway.app:6753/railway
+
+2. MYSQLDATABASE
+blberepzrpnvxnlugwkz
+
+3. MYSQLHOST
+blberepzrpnvxnlugwkz-mysql.services.clever-cloud.com
+
+4. MYSQLPASSWORDº   
+iGkPAjZypDyIK79LXniY
+
+5. MYSQLPORT
+3306
+
+6. MYSQLUSER
+ulzudrkmormsmvze
+
+

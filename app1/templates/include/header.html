@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nini Make-up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/carrito/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
+
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mr-5 ">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="" srcset="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #dd7b79;">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pqr/pqr.html" style="color: #dd7b79;">pqrs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'empleados_1' %}" style="color: #dd7b79;">administrador</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 mx-auto">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos"
+                        aria-label="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+                <!-- inicio de sesión -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #dd7b79;">
+                            iniciar sesion
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'valida_login' %}">Iniciar sesion</a>
+                            <a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a>
+
+
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </nav>
+
+        <!-- carrito de compras -->
+        <div id="cart-container">
+            <div id="cart-icon">
+                <img src="{% static 'img/car.png' %}" style="height: 50px; right: 7px;">             
+                <span class="cart-count">0</span>
+            </div>
+            <div id="cart-sidebar">
+                <div id="cart-header">
+                    <h2>bolsa de compras</h2>
+                    <span id="cart-close">&times;</span>
+                </div>
+                <div id="cart-items">
+                    <!-- Aquí se agregarán los elementos del carrito -->
+                </div>
+                <div id="cart-footer">
+                    <div id="cart-total">Total: $0.00</div>
+                    <button id="checkout-btn">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron jumbotron-fluid text-center" style="background-color: #dbdedc; min-width: 300px;">
+            <div class="container">
+               
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'script/js.js' %}"></script>
+
+
+</body>
+
+</html>

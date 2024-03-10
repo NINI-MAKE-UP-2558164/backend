@@ -1,0 +1,80 @@
+/* Establecer un fondo oscuro */
+body {
+    background-color: #1a1a1a;
+    color: #fff; /* Color del texto en blanco */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el encabezado h1 */
+h1 {
+    color: #ff6600; /* Color de resaltado (naranja) para el título */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para el contenedor */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+/* Estilo para el formulario */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Estilo para los campos de formulario */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ff6600; /* Color de resaltado (naranja) para las etiquetas */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
+    border: 1px solid #ff6600; /* Borde naranja */
+    color: #fff; /* Color del texto en blanco */
+}
+
+/* Estilo para el botón de guardar */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6600; /* Botón naranja */
+    color: #fff; /* Color del texto en blanco */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el botón de guardar al pasar el mouse */
+button[type="submit"]:hover {
+    background-color: #c26966; /* Rosa más oscuro al pasar el mouse */
+}
+
+/* Estilo para los enlaces */
+a {
+    display: block;
+    text-align: center;
+    color: #ff6600; /* Color de resaltado (naranja) para el enlace */
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Estilo para los enlaces al pasar el mouse */
+a:hover {
+    text-decoration: underline;
+}

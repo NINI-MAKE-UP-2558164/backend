@@ -1,0 +1,57 @@
+{% load static %} {% include "include/header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link type='text/css' href='{% static "css/empleados/css.css" %}' rel='stylesheet'/>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/carrito/css.css' %}">
+
+</head>
+
+<body>    
+<div class="wrapper">
+    
+    <!-- Agrega un bloque para mostrar los mensajes -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <form action="/empleados_1/" method="post">
+        <h1>empleados</h1>
+         
+        
+
+        <div class="input-box">
+            {% csrf_token %}
+            <input type="text" placeholder="Email" required name="email">
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="contrasena" required name="contrasena">
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+    
+        <div class="remember-forgot">
+            <label><input type="checkbox"> recordar tu contraseña?</label>
+            <a href="#">olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn">iniciar sesion</button>
+    
+        <div class="register-link">
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

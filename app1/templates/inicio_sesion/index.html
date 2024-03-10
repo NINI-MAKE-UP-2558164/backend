@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nini Make-up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/carrito/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index/style.css' %}">
+
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mr-5 ">
+            <a href="./index.html">
+                <img src="{% static 'img/logo.png' %}" alt="" srcset="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #dd7b79;">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pqr/pqr.html" style="color: #dd7b79;">pqrs</a>
+                    </li>
+                    <li class="nav-item">
+                        {% for usuarios in usuarios%}
+                        <p>Bienvenido, {{ usuarios.nombre }}</p>
+                        {% endfor%}
+                    </li>
+                    
+                </ul>
+                <form class="form-inline my-2 my-lg-0 mx-auto">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos"
+                        aria-label="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+                <!-- inicio de sesión -->
+                <ul class="navbar-nav ml-auto">
+                    
+                            
+                            <a class="dropdown-item" href="{% url 'logout' %}">cerrar sesion</a>
+                        </a>
+                        
+
+
+
+
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </nav>
+
+        <!-- carrito de compras -->
+        <div id="cart-container">
+            <div id="cart-icon">
+                <img src="{% static 'img/car.png' %}" style="height: 50px; right: 7px;">
+                <span class="cart-count">0</span>
+            </div>
+            <div id="cart-sidebar">
+                <div id="cart-header">
+                    <h2>bolsa de compras</h2>
+                    <span id="cart-close">&times;</span>
+                </div>
+                <div id="cart-items">
+                    <!-- Aquí se agregarán los elementos del carrito -->
+                </div>
+                <div id="cart-footer">
+                    <div id="cart-total">Total: $0.00</div>
+                    <button id="checkout-btn">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron jumbotron-fluid text-center" style="background-color: #dbdedc; min-width: 300px;">
+            <div class="container">
+                <h1 class="display-3" style="color: #dd7b79;">Bienvenidos a Nini Makeup!</h1>
+                <p class="lead">Tu tienda de maquillaje online.</p>
+                <hr class="my-4">
+                <p>Explora nuestra amplia gama de productos de belleza.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Comprar ahora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- slider -->
+
+
+
+
+
+
+    <!-- Main content -->
+    <main class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <aside class="sticky-top">
+                    <h2 class="text-center">Categorias</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="#">productos trendy</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Maquillaje de ojos</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Maquillaje delabios</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Cuidado de la piel</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Accesorios</a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-md-9">
+                <h2>Productos populares</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/pestañas trendy.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">PESTAÑAS TRENDY CAJA DE 3</h5>
+                                <p class="card-text">precio: $15.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/mascarilla trendy.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">MASCARILLA BARRA TRENDY</h5>
+                                <p class="card-text">Precio: $12.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/brillo super hidratante trendy.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">BRILLO SUPER HIDRATANTE FRESH TRENDY</h5>
+                                <p class="card-text">Precio: $10.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/tapete de pestañas negro.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">TAPETE DE PESTAÑAS NEGRO</h5>
+                                <p class="card-text">Precio: $15.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/brochas de silicona doble trendy.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">BROCHAS DE SILICONA TRENDY</h5>
+                                <p class="card-text">Precio: $10.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./catalogo/mascarilla conito trendy.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">MASCARILLA CONITO TRENDY</h5>
+                                <p class="card-text">Precio: $20.000</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./administrador/assets/img/1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Paleta de sombras</h5>
+                                <p class="card-text">Precio: $25.00</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./administrador/assets/img/1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Paleta de sombras</h5>
+                                <p class="card-text">Precio: $25.00</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="./administrador/assets/img/1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Base de maquillaje</h5>
+                                <p class="card-text">Precio: $15.00</p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" style="color: #dd7b79;">anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #dd7b79;">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #dd7b79;">2</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #dd7b79;">3</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color: #dd7b79;">siguiente</a></li>
+        </ul>
+    </nav>
+    <!-- Footer -->
+    <footer class="text-center" style="background-color: #dbdedc; min-width: 300px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Contactanos</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> contacto@ninimakeup.com</li>
+                        <li><i class="fas fa-phone"></i> +1 123-456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Siguenos</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> Youtube</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Terminos y condiciones</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Política de cookies</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p>&copy; 2023 Nini Make-up. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'script/js.js' %}"></script>
+
+</body>
+
+</html>

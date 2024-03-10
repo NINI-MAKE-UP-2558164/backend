@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Administradores</title>
+    <link rel="stylesheet" href="{% static 'css/crud/listar.css' %}">
+</head>
+<body>
+    <h1>Lista de Administradores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for administrador in administradores %}
+                <tr>
+                    <td>{{ administrador.id }}</td>
+                    <td>{{ administrador.nombre }}</td>
+                    <td>{{ administrador.apellidos }}</td>
+                    <td>{{ administrador.email }}</td>
+                    <td class="action-links">
+                        <a href="{% url 'editar_administrador' administrador.pk %}">Editar</a> 
+                        <a href="{% url 'eliminar_administrador' administrador.pk %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="create-user-link" href="{% url 'crear_administrador' %}">Crear Administrador</a>
+</body>
+</html>

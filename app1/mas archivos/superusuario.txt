@@ -1,0 +1,7 @@
+
+
+superusuario del admin
+
+-nombre del administrador = proyecto
+
+-contraseña = 996548

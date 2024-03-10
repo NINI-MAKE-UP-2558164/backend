@@ -1,0 +1,277 @@
+-- -----------------------------------------------------
+-- Schema proyecto
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `proyecto` DEFAULT CHARACTER SET utf8 ;
+USE `proyecto` ;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`cargo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`cargo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cargo` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`comantarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`comantarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `comentario` VARCHAR(255) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuarios_id` INT NOT NULL,
+  `productos_id` INT NOT NULL,
+  `productos_ventas_id` INT NOT NULL,
+  `productos_ventas_medio_pago_id` INT NOT NULL,
+  `productos_ventas_factura_id` INT NOT NULL,
+  `productos_proveedor_id` INT NOT NULL,
+  `productos_estado_producto_id` INT NOT NULL,
+  `productos_tipo_producto_id1` INT NOT NULL,
+  `productos_ventas_id1` INT NOT NULL,
+  `productos_ventas_medio_pago_id1` INT NOT NULL,
+  `productos_ventas_factura_id1` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuarios_id`, `productos_id`, `productos_ventas_id`, `productos_ventas_medio_pago_id`, `productos_ventas_factura_id`, `productos_proveedor_id`, `productos_estado_producto_id`, `productos_tipo_producto_id1`, `productos_ventas_id1`, `productos_ventas_medio_pago_id1`, `productos_ventas_factura_id1`),
+  INDEX `fk_comantarios_usuarios1_idx` (`usuarios_id` ASC) VISIBLE,
+  INDEX `fk_comantarios_productos1_idx` (`productos_id` ASC, `productos_ventas_id` ASC, `productos_ventas_medio_pago_id` ASC, `productos_ventas_factura_id` ASC, `productos_proveedor_id` ASC, `productos_estado_producto_id` ASC, `productos_tipo_producto_id1` ASC, `productos_ventas_id1` ASC, `productos_ventas_medio_pago_id1` ASC, `productos_ventas_factura_id1` ASC) VISIBLE,
+  CONSTRAINT `fk_comantarios_productos1` FOREIGN KEY (`productos_id` , `productos_ventas_id` , `productos_ventas_medio_pago_id` , `productos_ventas_factura_id` , `productos_proveedor_id` , `productos_estado_producto_id` , `productos_tipo_producto_id1` , `productos_ventas_id1` , `productos_ventas_medio_pago_id1` , `productos_ventas_factura_id1`) REFERENCES `proyecto`.`productos` (`id` , `ventas_id` , `ventas_medio_pago_id` , `ventas_factura_id` , `proveedor_id` , `estado_producto_id` , `tipo_producto_id1` , `ventas_id1` , `ventas_medio_pago_id1` , `ventas_factura_id1`),
+  CONSTRAINT `fk_comantarios_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `proyecto`.`usuarios` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`compras`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`compras` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cantidad` VARCHAR(450) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `proveedor_id` INT NOT NULL,
+  `tipo_producto_id` INT NOT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `proveedor_id`, `tipo_producto_id`),
+  INDEX `fk_compras_proveedor1_idx` (`proveedor_id` ASC) VISIBLE,
+  INDEX `fk_compras_tipo_producto1_idx` (`tipo_producto_id` ASC) VISIBLE,
+  CONSTRAINT `fk_compras_proveedor1` FOREIGN KEY (`proveedor_id`) REFERENCES `proyecto`.`proveedor` (`id`),
+  CONSTRAINT `fk_compras_tipo_producto1` FOREIGN KEY (`tipo_producto_id`) REFERENCES `proyecto`.`tipo_producto` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`detalles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`detalles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `factura` INT NULL DEFAULT NULL,
+  `producto` INT NULL DEFAULT NULL,
+  `cantidad` INT NULL DEFAULT NULL,
+  `precio` INT NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `factura_id` INT NOT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `factura_id`),
+  INDEX `fk_detalles_factura1_idx` (`factura_id` ASC) VISIBLE,
+  CONSTRAINT `fk_detalles_factura1` FOREIGN KEY (`factura_id`) REFERENCES `proyecto`.`factura` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`empleados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`empleados` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombres` VARCHAR(45) NULL DEFAULT NULL,
+  `apellidos` VARCHAR(45) NULL DEFAULT NULL,
+  `correo` VARCHAR(45) NULL DEFAULT NULL,
+  `celular` VARCHAR(45) NULL DEFAULT NULL,
+  `genero` VARCHAR(45) NULL DEFAULT NULL,
+  `contraseña` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `cargo_id` INT NOT NULL,
+  `estado_empleados_id` INT NOT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `cargo_id`, `estado_empleados_id`),
+  INDEX `fk_empleados_cargo1_idx` (`cargo_id` ASC) VISIBLE,
+  INDEX `fk_empleados_estado_empleados1_idx` (`estado_empleados_id` ASC) VISIBLE,
+  CONSTRAINT `fk_empleados_cargo1` FOREIGN KEY (`cargo_id`) REFERENCES `proyecto`.`cargo` (`id`),
+  CONSTRAINT `fk_empleados_estado_empleados1` FOREIGN KEY (`estado_empleados_id`) REFERENCES `proyecto`.`estado_empleados` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`estado_empleados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`estado_empleados` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `estado` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`estado_producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`estado_producto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `estado` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`factura`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`factura` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fecha` DATE NULL DEFAULT NULL,
+  `establecimiento` VARCHAR(45) NULL DEFAULT NULL,
+  `empleado_id` INT NULL DEFAULT NULL,
+  `total` INT NULL DEFAULT NULL,
+  `factura` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`logs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`logs` (
+  `id` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `productos_id` INT NOT NULL,
+  `productos_ventas_id` INT NOT NULL,
+  `productos_ventas_medio_pago_id` INT NOT NULL,
+  `productos_ventas_factura_id` INT NOT NULL,
+  `productos_proveedor_id` INT NOT NULL,
+  `productos_estado_producto_id` INT NOT NULL,
+  `productos_tipo_producto_id1` INT NOT NULL,
+  `productos_ventas_id1` INT NOT NULL,
+  `productos_ventas_medio_pago_id1` INT NOT NULL,
+  `productos_ventas_factura_id1` INT NOT NULL,
+  PRIMARY KEY (`id`, `productos_id`, `productos_ventas_id`, `productos_ventas_medio_pago_id`, `productos_ventas_factura_id`, `productos_proveedor_id`, `productos_estado_producto_id`, `productos_tipo_producto_id1`, `productos_ventas_id1`, `productos_ventas_medio_pago_id1`, `productos_ventas_factura_id1`),
+  INDEX `fk_logs_productos1_idx` (`productos_id` ASC, `productos_ventas_id` ASC, `productos_ventas_medio_pago_id` ASC, `productos_ventas_factura_id` ASC, `productos_proveedor_id` ASC, `productos_estado_producto_id` ASC, `productos_tipo_producto_id1` ASC, `productos_ventas_id1` ASC, `productos_ventas_medio_pago_id1` ASC, `productos_ventas_factura_id1` ASC) VISIBLE,
+  CONSTRAINT `fk_logs_productos1` FOREIGN KEY (`productos_id` , `productos_ventas_id` , `productos_ventas_medio_pago_id` , `productos_ventas_factura_id` , `productos_proveedor_id` , `productos_estado_producto_id` , `productos_tipo_producto_id1` , `productos_ventas_id1` , `productos_ventas_medio_pago_id1` , `productos_ventas_factura_id1`) REFERENCES `proyecto`.`productos` (`id` , `ventas_id` , `ventas_medio_pago_id` , `ventas_factura_id` , `proveedor_id` , `estado_producto_id` , `tipo_producto_id1` , `ventas_id1` , `ventas_medio_pago_id1` , `ventas_factura_id1`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`medio_pago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`medio_pago` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `medio_pago` VARCHAR(45) NULL DEFAULT NULL,
+  `usuarios_id` INT NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `usuarios_id`),
+  INDEX `fk_medio_pago_usuarios1_idx` (`usuarios_id` ASC) VISIBLE,
+  CONSTRAINT `fk_medio_pago_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `proyecto`.`usuarios` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`pgr`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`pgr` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombres` VARCHAR(45) NULL DEFAULT NULL,
+  `apellidos` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `correo` VARCHAR(45) NULL DEFAULT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `asunto` VARCHAR(45) NULL DEFAULT NULL,
+  `mensaje` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`productos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`productos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombres` VARCHAR(45) NULL DEFAULT NULL,
+  `catidad` VARCHAR(450) NULL DEFAULT NULL,
+  `precio` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `ventas_id` INT NOT NULL,
+  `ventas_medio_pago_id` INT NOT NULL,
+  `ventas_factura_id` INT NOT NULL,
+  `proveedor_id` INT NOT NULL,
+  `estado_producto_id` INT NOT NULL,
+  `tipo_producto_id1` INT NOT NULL,
+  `ventas_id1` INT NOT NULL,
+  `ventas_medio_pago_id1` INT NOT NULL,
+  `ventas_factura_id1` INT NOT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `ventas_id`, `ventas_medio_pago_id`, `ventas_factura_id`, `proveedor_id`, `estado_producto_id`, `tipo_producto_id1`, `ventas_id1`, `ventas_medio_pago_id1`, `ventas_factura_id1`),
+  INDEX `fk_productos_proveedor1_idx` (`proveedor_id` ASC) VISIBLE,
+  INDEX `fk_productos_estado_producto1_idx` (`estado_producto_id` ASC) VISIBLE,
+  INDEX `fk_productos_tipo_producto1_idx` (`tipo_producto_id1` ASC) VISIBLE,
+  INDEX `fk_productos_ventas1_idx` (`ventas_id1` ASC, `ventas_medio_pago_id1` ASC, `ventas_factura_id1` ASC) VISIBLE,
+  CONSTRAINT `fk_productos_estado_producto1` FOREIGN KEY (`estado_producto_id`) REFERENCES `proyecto`.`estado_producto` (`id`),
+  CONSTRAINT `fk_productos_proveedor1` FOREIGN KEY (`proveedor_id`) REFERENCES `proyecto`.`proveedor` (`id`),
+  CONSTRAINT `fk_productos_tipo_producto1` FOREIGN KEY (`tipo_producto_id1`) REFERENCES `proyecto`.`tipo_producto` (`id`),
+  CONSTRAINT `fk_productos_ventas1` FOREIGN KEY (`ventas_id1` , `ventas_medio_pago_id1` , `ventas_factura_id1`) REFERENCES `proyecto`.`ventas` (`id` , `medio_pago_id` , `factura_id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`proveedor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`proveedor` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `NIT` INT NULL DEFAULT NULL,
+  `nombres` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`tipo_producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`tipo_producto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `apellidos` VARCHAR(45) NULL DEFAULT NULL,
+  `celular` VARCHAR(45) NULL DEFAULT NULL,
+  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `direccion` VARCHAR(45) NULL DEFAULT NULL,
+  `contrasena` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `estado` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `proyecto`.`ventas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto`.`ventas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `producto` VARCHAR(45) NULL DEFAULT NULL,
+  `cantidad` VARCHAR(45) NULL DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `medio_pago_id` INT NOT NULL,
+  `factura_id` INT NOT NULL,
+  `update_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `medio_pago_id`, `factura_id`),
+  INDEX `fk_ventas_medio_pago1_idx` (`medio_pago_id` ASC) VISIBLE,
+  INDEX `fk_ventas_factura1_idx` (`factura_id` ASC) VISIBLE,
+  CONSTRAINT `fk_ventas_medio_pago1` FOREIGN KEY (`medio_pago_id`) REFERENCES `proyecto`.`medio_pago` (`id`),
+  CONSTRAINT `fk_ventas_factura1` FOREIGN KEY (`factura_id`) REFERENCES `proyecto`.`factura` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+

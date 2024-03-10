@@ -1,0 +1,61 @@
+/* Establecer un fondo negro */
+body {
+    background-color: #000;
+    color: #fff; /* Color del texto en blanco */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el encabezado h1 */
+h1 {
+    color: #ff6600; /* Color de resaltado (naranja) para el título */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para el formulario */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
+    border-radius: 5px;
+}
+
+/* Estilo para los campos del formulario */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco semi-transparente */
+    color: #fff;
+    border-radius: 3px;
+}
+
+/* Estilo para el botón */
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6600; /* Botón naranja */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilo para el enlace */
+a {
+    display: block;
+    text-align: center;
+    color: #ff6600; /* Color de resaltado (naranja) para el enlace */
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Estilo para el enlace al pasar el mouse */
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+body {
+    background-color: #333; /* Cambia el color de fondo a negro */
+    color: white; /* Cambia el color del texto a blanco */
+    font-family: Arial, sans-serif; /* Cambia la fuente del texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra el contenido verticalmente */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+}
+h1 {
+    font-size: 24px; /* Cambia el tamaño del título */
+}
+p {
+    font-size: 18px; /* Cambia el tamaño del texto */
+}
+button {
+    background-color: red; /* Cambia el color de fondo del botón a rojo */
+    color: white; /* Cambia el color del texto del botón a blanco */
+    padding: 10px 20px; /* Agrega un poco de espacio alrededor del botón */
+    border: none; /* Quita el borde del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+a {
+    color: blue; /* Cambia el color del enlace a azul */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    margin-top: 10px; /* Agrega un poco de espacio superior al enlace */
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+}
