@@ -67,3 +67,14 @@ class ProductosRegistroSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductosRegistro
         fields = '__all__'
+
+
+# class Carousel(models.Model):
+#     idcarousel = models.AutoField(primary_key=True)
+#     nombre = models.CharField(max_length=100, blank=True, null=True)
+#     descripcion = models.TextField(blank=True, null=True)
+#     imagen_url = models.CharField(max_length=255, blank=True, null=True)
+
+#     class Meta:
+#         managed = False
+#         db_table = 'carousel'
