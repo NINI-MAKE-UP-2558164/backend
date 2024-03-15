@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.views import View
-from app1.models import ProductosRegistro, Usuarios, empleados
+from app1.models import ProductosRegistro, Usuarios, empleados, Pgr
 from app1.forms import UsuariosForm, empleadosForm
 from django.shortcuts import render, redirect, get_object_or_404
 from app1.models import empleados
@@ -337,3 +337,6 @@ class ProductosRegistroViewSet(viewsets.ModelViewSet):
 class TipoProductoViewSet(viewsets.ModelViewSet):
     queryset = TipoProducto.objects.all()
     serializer_class = TipoProductoSerializer
+
+
+    

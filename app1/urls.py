@@ -1,8 +1,10 @@
 from rest_framework import routers
-from .api import ProductosRegistroViewsSet,TipoProductoViewSet
+from .api import ProductosRegistroViewsSet, TipoProductoViewSet, PgrViewSet
 from django.urls import path
 
 router = routers.DefaultRouter()
-router.register('api/app1', ProductosRegistroViewsSet, 'app1'),
-router.register('api/app1', TipoProductoViewSet, 'app1')
+router.register('api/app1/productos', ProductosRegistroViewsSet, 'productos')
+router.register('api/app1/tipos', TipoProductoViewSet, 'tipos')
+router.register('api/app1/pgr', PgrViewSet, 'pgr')
+
 urlpatterns = router.urls
