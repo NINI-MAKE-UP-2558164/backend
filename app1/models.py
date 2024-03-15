@@ -69,6 +69,17 @@ class ProductosRegistroSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class Pgr(models.Model):
+    tipo = models.CharField(max_length=45, blank=True, null=True)
+    nombres_completos = models.CharField(max_length=45, blank=True, null=True)
+    correo = models.CharField(max_length=45, blank=True, null=True)
+    descripcion = models.CharField(max_length=45, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pgr'
+
 # class Carousel(models.Model):
 #     idcarousel = models.AutoField(primary_key=True)
 #     nombre = models.CharField(max_length=100, blank=True, null=True)

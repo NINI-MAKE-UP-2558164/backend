@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app1.models import ProductosRegistro,TipoProducto
+from app1.models import ProductosRegistro,TipoProducto,Pgr
 
 class ProductosRegistroSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -30,4 +30,12 @@ class TipoProductoSerializer(serializers.ModelSerializer):
         model = ProductosRegistro
         fields = ['tipo']
         read_only_fields = ('create_at', )
+
+
+
+
+class PgrSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pgr
+        fields = ['tipo', 'nombres_completos', 'correo', 'descripcion', 'created_at']
 
