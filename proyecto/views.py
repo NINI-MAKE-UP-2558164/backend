@@ -325,7 +325,7 @@ class ProductosRegistroViewSet(APIView):
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-from ..app1.models import TipoProducto
+
 from rest_framework import viewsets
 
 class ProductosRegistroViewSet(viewsets.ModelViewSet):
