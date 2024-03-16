@@ -1,37 +1,50 @@
 from django.db import models
 
-class Usuarios(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombres = models.CharField(max_length=254)
-    apellidos = models.CharField(max_length=255)
-    celular = models.BigIntegerField()
-    email = models.CharField(max_length=254)
-    direccion = models.CharField(max_length=254)
-    contrasena = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    estado_usuarios_id = models.IntegerField(default=1)
+# class Usuarios(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     nombres = models.CharField(max_length=254)
+#     apellidos = models.CharField(max_length=255)
+#     celular = models.BigIntegerField()
+#     email = models.CharField(max_length=254)
+#     direccion = models.CharField(max_length=254)
+#     contrasena = models.CharField(max_length=255)
+#     estado_usuarios_id = models.IntegerField(default=1)
+
+#     class Meta:
+#         managed = False
+#         db_table = 'usuarios'
+
+
+# class Empleados(models.Model):
+#     nombres = models.CharField(max_length=45, blank=True, null=True)
+#     apellidos = models.CharField(max_length=45, blank=True, null=True)
+#     email = models.CharField(max_length=45, blank=True, null=True)
+#     celular = models.CharField(max_length=45, blank=True, null=True)
+#     genero = models.CharField(max_length=45, blank=True, null=True)
+#     contrasena = models.CharField(max_length=450, blank=True, null=True)
+#     created_at = models.DateTimeField(blank=True, null=True)
+#     cargo_id = models.IntegerField()
+#     estado_empleados_id = models.IntegerField()
+#     update_at = models.DateTimeField(blank=True, null=True)
+
+#     class Meta:
+#         managed = False
+#         db_table = 'empleados'
+#         unique_together = (('id', 'cargo_id', 'estado_empleados_id'),)
+
+
+
+
+class TipoProducto(models.Model):
+    tipo = models.CharField(max_length=45, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'usuarios'
+        db_table = 'tipo_producto'
 
 
-class empleados(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombres = models.CharField(max_length=254)
-    apellidos = models.CharField(max_length=255)
-    email = models.CharField(max_length=254)
-    celular = models.BigIntegerField()
-    genero = models.CharField(max_length=255)
-    contrasena = models.CharField(max_length=500)
-    created_at = models.DateTimeField(auto_now_add=True)
-    cargo_id = models.IntegerField(default=1)
-    estado_empleados_id = models.IntegerField(default=1)
-    
-
-    class Meta:
-        managed = False
-        db_table = 'empleados'
+from django.db import models
 
 
 
@@ -39,24 +52,12 @@ class ProductosRegistro(models.Model):
     nombre = models.CharField(max_length=250, blank=True, null=True)
     precio = models.CharField(max_length=250, blank=True, null=True)
     cantidad = models.CharField(max_length=250, blank=True, null=True)
-    imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)  # Cambiado a ImageField
-    create_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'productos_registro'
-
-
-
-class TipoProducto(models.Model):
-    tipo = models.CharField(max_length=45, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    update_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tipo_producto'
-
        
 
 
@@ -69,7 +70,7 @@ class ProductosRegistroSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class Pgr(models.Model):
+class Pqr(models.Model):
     tipo = models.CharField(max_length=45, blank=True, null=True)
     nombres_completos = models.CharField(max_length=45, blank=True, null=True)
     correo = models.CharField(max_length=45, blank=True, null=True)
@@ -78,14 +79,9 @@ class Pgr(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'pgr'
+        db_table = 'pqr'
 
-# class Carousel(models.Model):
-#     idcarousel = models.AutoField(primary_key=True)
-#     nombre = models.CharField(max_length=100, blank=True, null=True)
-#     descripcion = models.TextField(blank=True, null=True)
-#     imagen_url = models.CharField(max_length=255, blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'carousel'
+        
+
+

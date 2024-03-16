@@ -1,9 +1,10 @@
-from .models import ProductosRegistro,TipoProducto
+from .models import ProductosRegistro,TipoProducto,Pqr
 from rest_framework import viewsets, permissions
-from .serializers import ProductosRegistroSerializer,TipoProductoSerializer
+from .serializers import ProductosRegistroSerializer,TipoProductoSerializer,PqrSerializer
 
 class ProductosRegistroViewsSet(viewsets.ModelViewSet):
     queryset = ProductosRegistro.objects.all()
+    print(queryset)
     permission_classes = [permissions.AllowAny]
     serializer_class = ProductosRegistroSerializer 
 
@@ -14,12 +15,6 @@ class TipoProductoViewSet(viewsets.ModelViewSet):
     serializer_class = TipoProductoSerializer  
 
 
-
-from rest_framework import viewsets
-from rest_framework.response import Response
-from .models import Pgr
-from .serializers import PgrSerializer
-
-class PgrViewSet(viewsets.ModelViewSet):
-    queryset = Pgr.objects.all()
-    serializer_class = PgrSerializer
+class PqrViewSet(viewsets.ModelViewSet):
+    queryset = Pqr.objects.all()
+    serializer_class = PqrSerializer

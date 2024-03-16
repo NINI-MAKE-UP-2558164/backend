@@ -302,12 +302,10 @@ class ProductosRegistroViewSet(APIView):
 
 from rest_framework import viewsets
 
-class ProductosRegistroViewSet(viewsets.ModelViewSet):
+class ProductosRegistroModelViewSet(viewsets.ModelViewSet):
     queryset = ProductosRegistro.objects.all()
     serializer_class = ProductosRegistroSerializer
 
-
-    
 class TipoProductoViewSet(viewsets.ModelViewSet):
     queryset = TipoProducto.objects.all()
     serializer_class = TipoProductoSerializer
