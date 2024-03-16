@@ -139,10 +139,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-STATIC_URL = "static/"
+STATIC_URL = '/app1/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app1/static')]
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# Directorio para archivos estáticos de la aplicación (CSS, JavaScript, etc.)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'app1/static'),
+]
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+MEDIA_URL = '/media/'  
+# Directorio para archivos de medios (imágenes, archivos subidos, etc.)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app1')  
+
+
+

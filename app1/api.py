@@ -5,13 +5,13 @@ from .serializers import ProductosRegistroSerializer,TipoProductoSerializer
 class ProductosRegistroViewsSet(viewsets.ModelViewSet):
     queryset = ProductosRegistro.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = ProductosRegistroSerializer  # Corregido el nombre de la propiedad
+    serializer_class = ProductosRegistroSerializer 
 
 
 class TipoProductoViewSet(viewsets.ModelViewSet):
     queryset = TipoProducto.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = TipoProductoSerializer  # Corregido el nombre de la propiedad
+    serializer_class = TipoProductoSerializer  
 
 
 

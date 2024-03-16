@@ -3,10 +3,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.views import View
-from app1.models import ProductosRegistro, Usuarios, empleados, Pgr
+from app1.models import ProductosRegistro, Usuarios, empleados
 from app1.forms import UsuariosForm, empleadosForm
 from django.shortcuts import render, redirect, get_object_or_404
 from app1.models import empleados
+from app1.models import TipoProducto
+
 
 # nombre usuario en index
 
@@ -150,35 +152,6 @@ def valida_login(request):
 def listar_usuarios(request):
     usuarios = Usuarios.objects.all()
     return render(request, 'listar_usuarios.html', {'usuarios': usuarios})
-
-# Vista para crear un nuevo usuario
-
-def agregar_usuario(request):
-    if request.method == 'POST':
-        formulario = AddUsuariosForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request, 'Usuario creado exitosamente')
-            return redirect("listar_usuarios")  # Reemplaza "listar_usuarios" con la URL adecuada
-    else:
-        formulario = AddUsuariosForm()
-    
-    return render(request, 'agregar_usuario.html', {'formulario': formulario})
-
-# Vista para editar un usuario
-
-def form_editar_usuario(request, id):
-    usuario = get_object_or_404(Usuarios, idestudios=id)
-    if request.method == 'POST':
-        formulario = AddUsuariosForm(request.POST, instance=usuario)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request, 'Usuario editado exitosamente')
-            return redirect("listar_usuarios")  # Reemplaza "listar_usuarios" con la URL adecuada
-    else:
-        formulario = AddUsuariosForm(instance=usuario)
-    
-    return render(request, 'editar_usuario.html', {'formulario': formulario, 'usuario': usuario})
 
 # Vista para eliminar un usuario
 
@@ -326,6 +299,7 @@ class ProductosRegistroViewSet(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
 from rest_framework import viewsets
 
 class ProductosRegistroViewSet(viewsets.ModelViewSet):
@@ -337,6 +311,3 @@ class ProductosRegistroViewSet(viewsets.ModelViewSet):
 class TipoProductoViewSet(viewsets.ModelViewSet):
     queryset = TipoProducto.objects.all()
     serializer_class = TipoProductoSerializer
-
-
-    

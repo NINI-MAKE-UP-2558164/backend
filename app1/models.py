@@ -36,14 +36,14 @@ class empleados(models.Model):
 
 
 class ProductosRegistro(models.Model):
-    nombre = models.CharField(max_length=250)
-    cantidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    nombre = models.CharField(max_length=250, blank=True, null=True)
+    precio = models.CharField(max_length=250, blank=True, null=True)
+    cantidad = models.CharField(max_length=250, blank=True, null=True)
+    imagen = models.ImageField(upload_to='img/productos', blank=True, null=True)  # Cambiado a ImageField
+    create_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'productos_registro'
 
 

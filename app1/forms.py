@@ -12,6 +12,6 @@ class empleadosForm(forms.ModelForm):
         model = empleados
         fields = ['nombres', 'apellidos', 'email', 'celular', 'genero','contrasena']
 class productosRegistroForm(forms.ModelForm):
-    class meta:
+    class Meta:  
         model = ProductosRegistro
         fields = ['nombre', 'cantidad', 'precio', 'imagen']
