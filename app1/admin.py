@@ -1,19 +1,20 @@
 from django.contrib import admin
-from app1.models import ProductosRegistro, Pqr
-
-# @admin.register(Usuarios)
-# class UsuariosAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'created_at', 'estado_usuarios_id')
-
-# @admin.register(empleados)
-# class empleadosAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'nombres', 'apellidos', 'email', 'celular', 'genero', 'contrasena', 'cargo_id', 'estado_empleados_id')
-
-from django.contrib import admin
-from app1.models import ProductosRegistro
+from app1.models import ProductosRegistro, Pqr, Empleados, TipoProducto, Usuarios
 from django.utils.html import format_html
 
+# usuarios
+@admin.register(Usuarios)
+class UsuariosAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombres', 'apellidos', 'celular', 'email', 'direccion', 'contrasena', 'estado_usuarios_id', 'created_at')
 
+# empleados
+@admin.register(Empleados)
+class empleadosAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombres', 'apellidos', 'email', 'celular', 'genero', 'contrasena', 'cargo_id', 'estado_empleados_id', 'created_at')
+
+
+
+# productos_registro
 @admin.register(ProductosRegistro)
 class ProductosRegistroAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'precio', 'cantidad', 'imagen', 'created_at')
@@ -33,32 +34,32 @@ class ProductosRegistroAdmin(admin.ModelAdmin):
     imagen_tag.short_description = 'Vista previa de la imagen'
 
 
+
+# admin pqr
 @admin.register(Pqr)
 class PqrAdmin(admin.ModelAdmin):
     list_display = ('id', 'tipo', 'nombres_completos', 'correo', 'descripcion', 'created_at')
+    readonly_fields = ('created_at',) 
 
 
 
-from django.contrib import admin
-from .models import TipoProducto
-
+# tipoproducto
 @admin.register(TipoProducto)
 class TipoProductoAdmin(admin.ModelAdmin):
     list_display = ('id', 'tipo', 'created_at')
-    search_fields = ('tipo',)  # Campo de búsqueda para el tipo de producto
-    readonly_fields = ('created_at',)  # Campo de fecha de creación como solo lectura
-
+    search_fields = ('tipo',) 
+    readonly_fields = ('created_at',)  
     fieldsets = (
         ('Información del Tipo', {
             'fields': ('tipo',)
         }),
         ('Fechas', {
             'fields': ('created_at',),
-            'classes': ('collapse',)  # Oculta este campo por defecto
+            'classes': ('collapse',)  
         }),
     )
 
     def get_readonly_fields(self, request, obj=None):
-        if obj:  # Si es una instancia existente, deja el campo de fecha como solo lectura
+        if obj:  
             return self.readonly_fields
-        return ()  # Si es una nueva instancia, no hay campos de solo lectura
+        return ()  

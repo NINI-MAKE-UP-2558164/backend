@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from app1.models import ProductosRegistro, TipoProducto, Pqr
+from app1.models import ProductosRegistro, TipoProducto, Pqr, Usuarios, Empleados
 
+
+# productos_registro
 class ProductosRegistroSerializer(serializers.ModelSerializer):
     class Meta: 
         model = ProductosRegistro
@@ -23,14 +25,31 @@ class ProductosRegistroSerializer(serializers.ModelSerializer):
 
         return cantidad
     
+# tipoproducto    
 class TipoProductoSerializer(serializers.ModelSerializer):
     class Meta: 
         model = TipoProducto
         fields = ['tipo', 'created_at']
         read_only_fields = ('created_at', )
 
+# pqr
 class PqrSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pqr
         fields = ['tipo', 'nombres_completos', 'correo', 'descripcion', 'created_at']
         read_only_fields = ('created_at', )
+
+
+
+# empleados
+class EmpleadosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Empleados
+        fields = '__all__'
+
+# usuarios
+class UsuariosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuarios
+        fields = '__all__'
+
