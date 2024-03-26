@@ -9,4 +9,5 @@ router.register('api/app1/pqr', PqrViewSet, 'pqr')
 router.register('api/app1/empleados', EmpleadosViewSet, 'empleados' )
 router.register('api/app1/Usuarios', UsuariosViewSet, 'Usuarios' )
 
+
 urlpatterns = router.urls

@@ -1,4 +1,4 @@
-@set "VIRTUAL_ENV=C:\Users\alfon\OneDrive\Documentos\GitHub\backend\virtualenv"
+@set "VIRTUAL_ENV=C:\Users\ASUS\Desktop\backend\virtualenv"
 
 @set "VIRTUAL_ENV_PROMPT="
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (
